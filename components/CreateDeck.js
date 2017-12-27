@@ -5,7 +5,7 @@ class CreateDeck extends Component {
   render() {
     return (
       <View>
-        <Text>CreateDeck</Text>
+        <Text>Create Deck</Text>
       </View>
     );
   }

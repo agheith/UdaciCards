@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-   Text,
+  StatusBar,
    View,
-   StatusBar
 } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Constants } from 'expo';
+import { Feather, MaterialIcons } from '@expo/vector-icons';
 import AddQuestion from './components/AddQuestion';
 import CreateDeck from './components/CreateDeck';
 import Deck from './components/Deck';
@@ -28,10 +28,18 @@ const Tabs = TabNavigator({
 
   Decks: {
     screen: DeckList,
+    navigationOptions: {
+      tabBarLabel: 'Decks',
+      tabBarIcon: ({ tintColor }) => <Feather name='home' size={30} color={tintColor} />
+    }
   },
 
   CreateDeck: {
     screen: CreateDeck,
+    navigationOptions: {
+      tabBarLabel: 'Create Deck',
+      tabBarIcon: ({ tintColor }) => <MaterialIcons name='create' size={30} color={tintColor} />
+    }
   },
 
 });
@@ -42,15 +50,31 @@ const MainNavigation = StackNavigator({
     screen: Tabs,
     navigationOptions: {
       title: 'Flash Cards',
+      headerTintColor: '#ECECEC',
+      headerStyle: {
+        backgroundColor: '#CC2B1D'
+      }
     }
   },
 
   AddQuestion: {
     screen: AddQuestion,
+    navigationOptions: {
+      headerTintColor: '#ECECEC',
+      headerStyle: {
+        backgroundColor: '#CC2B1D'
+      }
+    }
   },
 
   DeckList: {
     screen: DeckList,
+    navigationOptions: {
+      headerTintColor: '#ECECEC',
+      headerStyle: {
+        backgroundColor: '#CC2B1D'
+      }
+    }
   },
 
   Deck: {
@@ -59,6 +83,12 @@ const MainNavigation = StackNavigator({
 
   Quiz: {
     screen: Quiz,
+    navigationOptions: {
+      headerTintColor: '#ECECEC',
+      headerStyle: {
+        backgroundColor: '#CC2B1D'
+      }
+    }
   },
 
 });
@@ -68,10 +98,10 @@ export default class App extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <HomeStatusBar
-          backgroundColor="green"
+          backgroundColor="#CC2B1D"
+          barStyle="light-content"
         />
         <MainNavigation />
-        <Text>Homepage</Text>
       </View>
     );
   }
