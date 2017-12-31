@@ -1,8 +1,8 @@
 import React from 'react';
-import {
-  StatusBar,
-   View,
-} from 'react-native';
+import { StatusBar, View } from 'react-native';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Constants } from 'expo';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
@@ -11,6 +11,7 @@ import CreateDeck from './components/CreateDeck';
 import Deck from './components/Deck';
 import DeckList from './components/DeckList';
 import Quiz from './components/Quiz';
+import reducer from './reducers';
 
 function HomeStatusBar({ backgroundColor, ...props }) {
   return (
@@ -49,7 +50,7 @@ const MainNavigation = StackNavigator({
   Home: {
     screen: Tabs,
     navigationOptions: {
-      title: 'Flash Cards',
+      title: 'UdaciCards',
       headerTintColor: '#ECECEC',
       headerStyle: {
         backgroundColor: '#CC2B1D'
@@ -79,6 +80,12 @@ const MainNavigation = StackNavigator({
 
   Deck: {
     screen: Deck,
+    navigationOptions: {
+      headerTintColor: '#ECECEC',
+      headerStyle: {
+        backgroundColor: '#CC2B1D'
+      }
+    }
   },
 
   Quiz: {
@@ -95,14 +102,17 @@ const MainNavigation = StackNavigator({
 
 export default class App extends React.Component {
   render() {
+    const store = createStore(reducer, applyMiddleware(ReduxThunk));
     return (
-      <View style={{ flex: 1 }}>
-        <HomeStatusBar
-          backgroundColor="#CC2B1D"
-          barStyle="light-content"
-        />
-        <MainNavigation />
-      </View>
+      <Provider store={store}>
+        <View style={{ flex: 1 }}>
+          <HomeStatusBar
+            backgroundColor="#CC2B1D"
+            barStyle="light-content"
+          />
+          <MainNavigation />
+        </View>
+      </Provider>
     );
   }
 }
