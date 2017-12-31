@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const deckData = state.decks;
   return { deckData };
 };

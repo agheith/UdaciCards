@@ -22,16 +22,26 @@ class Quiz extends Component {
     const questions = this.props.navigation.state.params.questions;
     let singleQuestion = questions.length - 1;
 
-    while (singleQuestion >= 0) {
+    do {
       const randomizedQuestions = Math.floor(Math.random() * (questions.length - 1));
       const temp = questions[randomizedQuestions];
       questions[randomizedQuestions] = questions[singleQuestion];
       questions[singleQuestion] = temp;
       singleQuestion--;
+    } while (singleQuestion >= 0);
 
-      return questions;
-    }
+    return questions;
   }
+
+    // while (singleQuestion >= 0) {
+    //   const randomizedQuestions = Math.floor(Math.random() * (questions.length - 1));
+    //   const temp = questions[randomizedQuestions];
+    //   questions[randomizedQuestions] = questions[singleQuestion];
+    //   questions[singleQuestion] = temp;
+    //   singleQuestion--;
+    //
+    //   return questions;
+    // }
 
   goBack() {
     this.props.navigation.dispatch(NavigationActions.navigate({
