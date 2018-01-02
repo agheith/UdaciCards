@@ -23,6 +23,7 @@ class DeckList extends Component {
       <View>
         <Card title={item.title} >
           <Text>{`This deck has ${item.questions.length} cards`}</Text>
+        {/* <Text>{`This deck has ${console.log(item)} cards `}</Text> */}
         </Card>
       </View>
     </TouchableOpacity>
@@ -44,15 +45,6 @@ class DeckList extends Component {
         />
         }
       </View>
-      // <View style={styles.wrapper}>
-      //
-      //
-      //     <FlatList
-      //       data={this.props.deckData}
-      //       renderItem={this.renderItem}
-      //     />
-      //
-      // </View>
     );
   }
 }

@@ -18,6 +18,17 @@ class Quiz extends Component {
     correctAnswers: 0
   }
 
+  restartQuiz() {
+    this.setState(() => {
+      return {
+        questions: this.questionsShuffle(),
+        showQuestion: true,
+        currentQuestion: 0,
+        correctAnswers: 0
+      };
+    });
+  }
+
   questionsShuffle() {
     const questions = this.props.navigation.state.params.questions;
     let singleQuestion = questions.length - 1;
@@ -118,6 +129,12 @@ class Quiz extends Component {
               'Nice Try!'
           }
          </Text>
+         <Button
+           buttonStyle={styles.buttonStyle}
+           title='Restart Quiz'
+           backgroundColor='#CC2B1D'
+           onPress={() => this.restartQuiz()}
+         />
          <Button
            buttonStyle={styles.buttonStyle}
            title='Back to Decks'

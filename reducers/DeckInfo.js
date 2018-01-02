@@ -2,7 +2,9 @@ import {
   FETCH_DECK_INFO
 } from '../actions/types';
 
-export default function (state = {}, action) {
+const INITIAL_STATE = {};
+
+export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
 
     case FETCH_DECK_INFO:
