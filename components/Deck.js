@@ -16,6 +16,10 @@ class Deck extends Component {
     this.props.fetchDeckInfo(this.props.navigation.state.params.id);
   }
 
+  componentDidUpdate() {
+    this.props.fetchDeckInfo(this.props.navigation.state.params.id);
+  }
+
   render() {
     return (
       <View style={styles.deckWrapper}>
